@@ -1,6 +1,6 @@
 import React from "react"
 import "./style/master.scss"
-import { BrowswerRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Landing from "./components/pages/Landing"
 import CreateAnswer from "./components/pages/CreateAnswer"
 import CreateImagery from "./components/pages/CreateImagery"
