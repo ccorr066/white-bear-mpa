@@ -1,5 +1,6 @@
 import React from "react"
 import AppTemplate from "./AppTemplate"
+import { Link } from "react-router-dom"
 
 export default function CreateAnswer() {
   return (
@@ -18,9 +19,9 @@ export default function CreateAnswer() {
       </p>
       <div className="clearfix"></div>
       <div className="float-right">
-        <a href="create-imagery.html" className="btn btn-outline-primary mt-4">
+        <Link to="/create-imagery" className="btn btn-outline-primary mt-4">
           Next
-        </a>
+        </Link>
       </div>
     </AppTemplate>
   )

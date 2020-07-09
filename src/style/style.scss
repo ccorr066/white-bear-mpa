@@ -19,11 +19,13 @@ p {
   text-align: none;
   color: black;
 }
+
 .background-image {
   background-image: url("/images/background-landing.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   background-attachment: fixed;
+  min-height: 100vh;
 }
 
 .btn-link {

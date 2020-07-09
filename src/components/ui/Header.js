@@ -1,5 +1,6 @@
 import React from "react"
 import appLogo from "../../icons/logo-app.svg"
+import { Link } from "react-router-dom"
 
 export default function Header() {
   return (
@@ -7,9 +8,9 @@ export default function Header() {
       {" "}
       <img src={appLogo} width="32px;" alt="White-bear-logo" />
       <h3 className="d-inline text-brand ml-1">White Bear</h3>
-      <a href="index.html" className="btn btn-link float-right">
+      <Link to="/" className="btn btn-link float-right">
         Log Out
-      </a>
+      </Link>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from "react"
+import AppTemplate from "./AppTemplate"
 
 export default function AllCards() {
-  return <h1>AllCards</h1>
+  return <AppTemplate></AppTemplate>
 }

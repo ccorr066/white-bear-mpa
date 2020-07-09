@@ -1,15 +1,11 @@
 import React from "react"
 import saveIcon from "../../icons/save.svg"
-import Header from "../ui/Header"
-import Navigation from "../ui/Navigation"
 import AppTemplate from "./AppTemplate"
+import { Link } from "react-router-dom"
 
 export default function CreateImagery() {
   return (
     <AppTemplate>
-      <Header />
-      <Navigation />
-
       <h4 className="my-4  text-center text-muted">Add memorable imagery</h4>
       <div className="mb-2">
         <div className="card bg-primary lead">
@@ -17,7 +13,7 @@ export default function CreateImagery() {
             <textarea
               rows="11"
               id="textImagery"
-              autoFocus={"true"}
+              autoFocus={true}
               cols="40"
             ></textarea>
           </div>
@@ -38,11 +34,12 @@ export default function CreateImagery() {
       </p>
       <div className=" clearfix"></div>
 
-      <button className="btn btn-link" id="create-error">
+      <Link to="/create-answer" className="btn btn-link" id="create-error">
         Back to answer
-      </button>
+      </Link>
 
-      <button
+      <Link
+        to="/create-answer"
         type="button"
         className="btn btn-primary btn-lg float-right "
         id="save-imagery"
@@ -50,12 +47,12 @@ export default function CreateImagery() {
         <img
           src={saveIcon}
           width="20px"
-          style={{ marginBottom: "3px;" }}
+          style={{ marginBottom: "3px" }}
           className="mr-2"
           alt=""
         />
         Save
-      </button>
+      </Link>
     </AppTemplate>
   )
 }
