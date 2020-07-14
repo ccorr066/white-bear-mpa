@@ -21,11 +21,12 @@ p {
 }
 
 .background-image {
-  background-image: url("/images/background-landing.jpg");
-  background-repeat: no-repeat;
+  background-image: url("../img/background-landing.jpg");
   background-size: cover;
-  background-attachment: fixed;
   min-height: 100vh;
+}
+.logo-landing {
+  background-image: url("/images/logo-landing.png");
 }
 
 .btn-link {
