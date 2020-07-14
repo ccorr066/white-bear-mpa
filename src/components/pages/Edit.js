@@ -2,19 +2,29 @@ import React from "react"
 import saveIcon from "../../icons/save.svg"
 import AppTemplate from "./AppTemplate"
 import { Link } from "react-router-dom"
-
+import memoryCards from "../mock-data/memory-cards"
+const memoryCard = memoryCards[2]
 export default function Edit() {
   return (
     <AppTemplate>
       <h4 className="my-4 text-center text-muted">Edit card</h4>
       <div className="mb-2">
+        <div className="card bg-primary">
+          <div className="card-body">
+            <textarea
+              rows="7"
+              className="d-none d-md-block"
+              defaultValue={memoryCard.imagery}
+            ></textarea>
+          </div>
+        </div>
         <div className="card bg-secondary">
           <div className="card-body">
-            One morning, when Gregor Samsa woke from troubled dreams, he found
-            himself transformed in his bed into a horrible vermin. He lay on his
-            armour-like back, and if he lifted his head a little he could see
-            his brown belly, slightly domed and divided by arches into stiff
-            sections. The bedding was hardly.
+            <textarea
+              rows="7"
+              className="d-none d-md-block"
+              defaultValue={memoryCard.answer}
+            ></textarea>
           </div>
         </div>
       </div>
@@ -57,10 +67,10 @@ export default function Edit() {
         </div>
 
         <div className="col-6 ml-5">
-          <p className="mb-2">Dec. 21, 2019</p>
-          <p className="mb-2">Dec. 31, 2019</p>
-          <p className="mb-2">Jul. 14, 2020</p>
-          <p className="mb-2">4</p>
+          <p className="mb-2">{memoryCard.createdAt}</p>
+          <p className="mb-2">{memoryCard.lastAttemptAt}</p>
+          <p className="mb-2">{memoryCard.nextAttemptAt}</p>
+          <p className="mb-2">{memoryCard.totalSuccessfulAttempts}</p>
         </div>
       </div>
       <div className="row">
