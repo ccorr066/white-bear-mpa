@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import classnames from "classnames"
+// import { Link } from "react-router-dom"
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -9,15 +10,36 @@ export default class SignUp extends React.Component {
       isDisplayingInputs: false,
       emailError: "",
       passwordError: "",
+      hasEmailError: false,
     }
   }
 
   toggleSignUpInputs() {
-    console.log("clicked")
-    {
+    this.setState({
+      isDisplayingInputs: true,
+    })
+  }
+  validateAndCreateUser() {
+    console.log("ValidateMe")
+
+    const emailInput = document.getElementById("email-input").value
+    console.log(emailInput)
+    //eslint-disable-next-line
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const lowerCaseEmailInput = emailInput.toLowerCase()
+    if (emailInput === "")
       this.setState({
-        isDisplayingInputs: true,
+        emailError: "Please enter your email address. ",
+        hasEmailError: true,
       })
+    else if (emailRegex.test(lowerCaseEmailInput) === false) {
+      console.log(" NOT A VALID EMAIL")
+      this.setState({
+        emailError: "Please enter a valid email address. ",
+        hasEmailError: true,
+      })
+    } else {
+      this.setState({ emailError: "", hasEmailError: false })
     }
   }
 
@@ -43,12 +65,24 @@ export default class SignUp extends React.Component {
                 <div id="drop-assign">
                   <h4 className="text-muted mt-2">Email address</h4>
                   <input
-                    className="form-control thick-border"
-                    type="text"
-                    id="email-identity"
+                    className={classnames({
+                      "form-control": true,
+                      "mb-2": true,
+                      "is-invalid": this.state.hasEmailError,
+                    })}
+                    type="email"
+                    id="email-input"
                   />
+                  {this.state.hasEmailError && (
+                    <p
+                      id="error-email"
+                      className="mb-4 text-danger"
+                      style={{ fontSize: "13px" }}
+                    >
+                      {this.state.emailError}
+                    </p>
+                  )}
                   <p
-                    id="error-email"
                     className="mb-4 text-danger"
                     style={{ fontSize: "13px" }}
                   ></p>
@@ -56,21 +90,23 @@ export default class SignUp extends React.Component {
                   <input
                     className="form-control thick-border mb-1"
                     type="password"
-                    id="password-required"
+                    id="password-input"
                   />
                   <p
                     id="invalid-characters"
-                    className="text-danger"
+                    className="text-danger mb-4"
                     style={{ fontSize: "13px" }}
                   ></p>
-                  <Link
-                    to="/create-answer"
+                  <button
                     type="button"
                     className="mt-5 btn btn-success btn-block"
                     id="lets-go"
+                    onClick={() => {
+                      this.validateAndCreateUser()
+                    }}
                   >
                     Let's go!
-                  </Link>
+                  </button>
                 </div>
               </>
             )}

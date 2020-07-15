@@ -9,7 +9,7 @@ export default function Login() {
           <h2 className="card-title text-serif">Welcome back</h2>
           <p className="mb-4">Log in with your email address and password</p>
 
-          <label className="input-text" htmlFor="email-input">
+          <label className="input-text text-muted" htmlFor="email-input">
             Email address
           </label>
           <input
@@ -18,7 +18,7 @@ export default function Login() {
             id="welcome-back"
           />
           <p
-            id="warning-welcome"
+            id="warning-welcome-email"
             className="mb-4 invalid-feedback"
             style={{ display: "none", fontSize: "13px" }}
           >

@@ -3,6 +3,7 @@ import saveIcon from "../../icons/save.svg"
 import AppTemplate from "./AppTemplate"
 import { Link } from "react-router-dom"
 import memoryCards from "../mock-data/memory-cards"
+import toDisplayDate from "date-fns/format"
 const memoryCard = memoryCards[2]
 export default function Edit() {
   return (
@@ -67,9 +68,15 @@ export default function Edit() {
         </div>
 
         <div className="col-6 ml-5">
-          <p className="mb-2">{memoryCard.createdAt}</p>
-          <p className="mb-2">{memoryCard.lastAttemptAt}</p>
-          <p className="mb-2">{memoryCard.nextAttemptAt}</p>
+          <p className="mb-2">
+            {toDisplayDate(memoryCard.createdAt, "MMM. d, y")}
+          </p>
+          <p className="mb-2">
+            {toDisplayDate(memoryCard.lastAttemptAt, "MMM. d, y")}
+          </p>
+          <p className="mb-2">
+            {toDisplayDate(memoryCard.nextAttemptAt, "MMM. d, y")}
+          </p>
           <p className="mb-2">{memoryCard.totalSuccessfulAttempts}</p>
         </div>
       </div>
