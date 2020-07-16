@@ -1,5 +1,7 @@
 import React from "react"
 import classnames from "classnames"
+import hash from "object-hash"
+import { v4 as getUuid } from "uuid"
 // import { Link } from "react-router-dom"
 
 export default class SignUp extends React.Component {
@@ -20,7 +22,7 @@ export default class SignUp extends React.Component {
       isDisplayingInputs: true,
     })
   }
-  setEmailState(emailInput) {
+  async setEmailState(emailInput) {
     //eslint-disable-next-line
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const lowerCaseEmailInput = emailInput.toLowerCase()
@@ -47,7 +49,7 @@ export default class SignUp extends React.Component {
     else if (localPart.length < 4) return false
     else return passwordInput.includes(localPart)
   }
-  setPasswordState(passwordInput, emailInput) {
+  async setPasswordState(passwordInput, emailInput) {
     console.log(passwordInput)
     const uniqChars = [...new Set(passwordInput)]
 
@@ -78,16 +80,22 @@ export default class SignUp extends React.Component {
     }
   }
 
-  validateAndCreateUser() {
+  async validateAndCreateUser() {
     const emailInput = document.getElementById("email-input").value
     const passwordInput = document.getElementById("password-input").value
-    this.setEmailState(emailInput)
-    this.setPasswordState(passwordInput, emailInput)
+    await this.setEmailState(emailInput)
+    await this.setPasswordState(passwordInput, emailInput)
     if (
       this.state.hasEmailError === false &&
       this.state.hasPasswordError === false
     ) {
-      console.log("VALID!!")
+      const user = {
+        id: getUuid(),
+        email: emailInput,
+        passwordInput: hash(passwordInput),
+        createdAt: Date.now(),
+      }
+      console.log(user)
     }
   }
 
